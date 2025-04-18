@@ -4,12 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.material3.Icon
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +34,9 @@ fun MainScreen() {
     ) {
         ShowAlertDialog()
         Spacer(modifier = Modifier.height(16.dp))
-        CheckBoxExample()
+        CheckBox()
+        Spacer(modifier = Modifier.height(16.dp))
+        FloatingActionButton()
     }
 }
 
@@ -63,7 +68,7 @@ fun ShowAlertDialog() {
 }
 
 @Composable
-fun CheckBoxExample() {
+fun CheckBox() {
     val checkedState = remember { mutableStateOf(false) }
 
     Checkbox(
@@ -71,6 +76,13 @@ fun CheckBoxExample() {
         onCheckedChange = { checkedState.value = it }
     )
     Text(text = if (checkedState.value) "Seleccionado" else "No Seleccionado")
+}
+
+@Composable
+fun FloatingActionButton() {
+    FloatingActionButton(onClick = { }) {
+        Icon(Icons.Filled.Add, contentDescription = "Agregar")
+    }
 }
 
 @Preview(showBackground = true)
